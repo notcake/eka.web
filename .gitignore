@@ -1,0 +1,38 @@
+# Compiled stuff
+
+bin
+
+*.com
+*.class
+
+*.exe
+*.o
+*.so
+*.pdb
+*.manifest
+
+obj
+
+# VS stuff
+
+*.suo
+*.csproj
+
+# OS stuff
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# shit inb5 shit breaks
+
+.htaccess
+*.log
+*.bat
+*.txt
+*.php
