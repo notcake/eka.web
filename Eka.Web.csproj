@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Google\CurrencyConverter.cs" />
     <Compile Include="Amazon\Amazon.cs" />
+    <Compile Include="Thesaurus\Thesaurus.cs" />
     <Compile Include="PlotGenerator\Plot.cs" />
     <Compile Include="SloganGenerator\Slogan.cs" />
     <Compile Include="MusicBrainz\RecordingSearch.cs" />
