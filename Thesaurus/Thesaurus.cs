@@ -46,6 +46,20 @@ namespace Eka.Web.Thesaurus
 
                 this.Success = true;
             }
+
+            match = new Regex("<h3>verb</h3>.+?(<li><a href=\".+?\">.+?</a></li>)+?</ul>", RegexOptions.IgnoreCase).Match(Data);
+
+            if (match.Success)
+            {
+                MatchCollection matches = Regex.Matches(match.Groups[0].ToString(), "<li><a href=\".+?\">(.+?)</a></li>");
+
+                foreach (Match m in matches)
+                {
+                    Synonyms.Add(m.Groups[1].ToString());
+                }
+
+                this.Success = true;
+            }
         }
     }
 }
