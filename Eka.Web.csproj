@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,7 @@
     <Compile Include="Thesaurus\Thesaurus.cs" />
     <Compile Include="PlotGenerator\Plot.cs" />
     <Compile Include="SloganGenerator\Slogan.cs" />
+	<Compile Include="UrbanDictionary\UrbanDictionary.cs" />
     <Compile Include="MusicBrainz\RecordingSearch.cs" />
     <Compile Include="MusicBrainz\RecordingSearchResult.cs" />
     <Compile Include="MusicBrainz\RecordingSearchResults.cs" />
@@ -76,6 +80,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\www.w3.org\TR\xhtml1\DTD\xhtml-lat1.ent" />
     <None Include="Resources\www.w3.org\TR\xhtml1\DTD\xhtml-special.ent" />
     <None Include="Resources\www.w3.org\TR\xhtml1\DTD\xhtml-symbol.ent" />
