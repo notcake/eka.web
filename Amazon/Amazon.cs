@@ -73,7 +73,7 @@ namespace Eka.Web.Amazon
             try
             {
                 WebClient web = new WebClient();
-                web.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+                web.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0");
                 this.Data = web.DownloadString(this.ListingUri);
             }
             catch (WebException e)
