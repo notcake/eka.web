@@ -39,11 +39,12 @@ namespace Eka.Web.Amazon
             }
 
             //Match match = new Regex("=\"btAsinTitle\">[^>]+>(.+)</span>", RegexOptions.IgnoreCase).Match(this.Data);
-            Match match = new Regex("\"title\":\"([^\"]+)\",", RegexOptions.IgnoreCase).Match(this.Data);
+            //Match match = new Regex("\"title\":\"([^\"]+)\",", RegexOptions.IgnoreCase).Match(this.Data);
+            Match match = new Regex("<.*?meta.*?name=\"description\".*?content=\"([^\"]+)\"", RegexOptions.IgnoreCase).Match(this.Data);
 
             if (match.Success)
             {
-                this.Title = match.Groups[1].ToString();
+                this.Title = WebUtility.HtmlDecode (match.Groups[1].ToString());
                 this.Success = true;
             }
             else
