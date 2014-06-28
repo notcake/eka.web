@@ -45,6 +45,7 @@ namespace Eka.Web.Amazon
             if (match.Success)
             {
                 this.Title = WebUtility.HtmlDecode (match.Groups[1].ToString());
+                this.Title = Regex.Replace(this.Title, "Amazon(\\.com)?[ :-]+", "");
                 this.Success = true;
             }
             else
