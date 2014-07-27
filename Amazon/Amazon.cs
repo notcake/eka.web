@@ -40,7 +40,7 @@ namespace Eka.Web.Amazon
 
             //Match match = new Regex("=\"btAsinTitle\">[^>]+>(.+)</span>", RegexOptions.IgnoreCase).Match(this.Data);
             //Match match = new Regex("\"title\":\"([^\"]+)\",", RegexOptions.IgnoreCase).Match(this.Data);
-            Match match = new Regex("<.*?meta.*?name=\"description\".*?content=\"([^\"]+)\"", RegexOptions.IgnoreCase).Match(this.Data);
+            Match match = new Regex("<.*?meta.*?name=\"title\".*?content=\"([^\"]+)\"", RegexOptions.IgnoreCase).Match(this.Data);
 
             if (match.Success)
             {
