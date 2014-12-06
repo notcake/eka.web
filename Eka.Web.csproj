@@ -48,7 +48,7 @@
     <Compile Include="Thesaurus\Thesaurus.cs" />
     <Compile Include="PlotGenerator\Plot.cs" />
     <Compile Include="SloganGenerator\Slogan.cs" />
-	<Compile Include="UrbanDictionary\UrbanDictionary.cs" />
+    <Compile Include="UrbanDictionary\UrbanDictionary.cs" />
     <Compile Include="MusicBrainz\RecordingSearch.cs" />
     <Compile Include="MusicBrainz\RecordingSearchResult.cs" />
     <Compile Include="MusicBrainz\RecordingSearchResults.cs" />
@@ -65,6 +65,7 @@
     <Compile Include="Wikipedia\AlbumInfobox.cs" />
     <Compile Include="Wikipedia\Page.cs" />
     <Compile Include="Wikipedia\SingleInfobox.cs" />
+    <Compile Include="Wolfram\Wolfram.cs" />
     <Compile Include="Xml\DtdCache.cs" />
     <Compile Include="Xml\XmlLoader.cs" />
     <Compile Include="Xml\CachingXmlResolver.cs" />
