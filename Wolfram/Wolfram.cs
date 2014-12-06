@@ -44,6 +44,7 @@ namespace Eka.Web.Wolfram
 
             XmlNode queryresult = doc.SelectSingleNode("//queryresult");
             if (queryresult == null) { return; }
+            
             bool success = Convert.ToBoolean(queryresult.Attributes["success"].Value);
 
             if (success)
@@ -51,7 +52,9 @@ namespace Eka.Web.Wolfram
                 XmlNodeList pods = queryresult.SelectNodes("//pod");
                 if (pods.Count < 1 | pods[1] == null) { this.Output = "got nothing, database down?"; return; }
 
-                this.Output = pods[0]["subpod"]["plaintext"].InnerText +"\n\n"+ pods[1]["subpod"]["plaintext"].InnerText.Replace("|","->");
+                byte[] bytes = Encoding.Default.GetBytes(pods[0]["subpod"]["plaintext"].InnerText +"\n\n"+ pods[1]["subpod"]["plaintext"].InnerText.Replace("|","->"));
+
+                this.Output = Encoding.UTF8.GetString(bytes);
 
             }
             else
