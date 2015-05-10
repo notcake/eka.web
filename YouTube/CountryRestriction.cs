@@ -1,38 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Eka.Web.YouTube
 {
     public class CountryRestriction : PlaybackRestriction
     {
+        public static CountryRestriction Default = new CountryRestriction(Relationship.Deny, new string[] {});
         public HashSet<string> countryCodes = new HashSet<string>();
-
-        public static CountryRestriction Default = new CountryRestriction(Relationship.Deny, new string[] { });
 
         public CountryRestriction(Relationship relationship, IEnumerable<string> countryCodes)
             : base(relationship)
         {
-            this.Type = "country";
-            foreach (string countryCode in countryCodes)
+            Type = "country";
+            foreach (var countryCode in countryCodes)
             {
                 this.countryCodes.Add(countryCode);
             }
         }
 
-        public IEnumerable<string> CountryCodes
-        {
-            get
-            {
-                return this.countryCodes;
-            }
-        }
+        public IEnumerable<string> CountryCodes => countryCodes;
 
         public bool IsCountryAllowed(string countryCode)
         {
-            bool containsCountry = this.countryCodes.Contains(countryCode);
-            if (this.Relationship == Relationship.Deny)
+            var containsCountry = countryCodes.Contains(countryCode);
+            if (Relationship == Relationship.Deny)
             {
                 containsCountry = !containsCountry;
             }

@@ -1,33 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Eka.Web.MusicBrainz
 {
     public class RecordingSearch
     {
-        public string Artist { get; set; }
-        public string SearchString { get; set; }
-
         public RecordingSearch()
         {
-            this.SearchString = "";
+            SearchString = "";
         }
 
         public RecordingSearch(string searchString)
         {
-            this.SearchString = searchString;
+            SearchString = searchString;
         }
+
+        public string Artist { get; set; }
+        public string SearchString { get; set; }
 
         public RecordingSearchResults GetResults()
         {
-            string searchUri = "http://www.musicbrainz.org/ws/2/recording?query=";
-            if (this.Artist != null)
+            var searchUri = "http://www.musicbrainz.org/ws/2/recording?query=";
+            if (Artist != null)
             {
-                searchUri += "artist:\"" + Uri.EscapeDataString(this.Artist.Replace("\"", "")) + "\" AND ";
+                searchUri += "artist:\"" + Uri.EscapeDataString(Artist.Replace("\"", "")) + "\" AND ";
             }
-            searchUri += "\"" + Uri.EscapeDataString(this.SearchString.Replace("\"", "")) + "\"";
+            searchUri += "\"" + Uri.EscapeDataString(SearchString.Replace("\"", "")) + "\"";
             searchUri += "&limit=100";
 
             return new RecordingSearchResults(this, searchUri);

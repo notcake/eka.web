@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Xml;
 using Newtonsoft.Json;
 
 namespace Eka.Web.UrbanDictionary
 {
-
 /*** UrbanDictionary Example Response
     {
         "tags":[
@@ -42,27 +37,16 @@ namespace Eka.Web.UrbanDictionary
     }
     */
 
-    class UrbanDictionaryResponse
+    internal class UrbanDictionaryResponse
     {
-        public String[] tags;
-        public String result_type;
-        public IDictionary<String, String>[] list;
-        //public JsonArrayAttribute sounds; // Does not work. We don't need it anyways.
+        public IDictionary<string, string>[] list;
+        public string result_type;
+        public string[] tags;
     }
 
 
     public class UrbanDictionary
     {
-        public string Id { get; protected set; }
-        public bool Success { get; protected set; }
-
-        public string Definition { get; protected set; }
-        public string Example { get; protected set; }
-
-        public string Data { get; protected set; }
-
-        public string Uri { get; protected set; }
-
         public UrbanDictionary(string id)
         {
             Success = false;
@@ -80,14 +64,19 @@ namespace Eka.Web.UrbanDictionary
                 return;
             }
 
-            UrbanDictionaryResponse response = JsonConvert.DeserializeObject<UrbanDictionaryResponse>(Data);
+            var response = JsonConvert.DeserializeObject<UrbanDictionaryResponse>(Data);
 
-            if (response.list.Count() >= 1)
-            {
-                Definition = response.list[0]["definition"];
-                Example = response.list[0]["example"];
-                this.Success = true;
-            }
+            if (!response.list.Any()) return;
+            Definition = response.list[0]["definition"];
+            Example = response.list[0]["example"];
+            Success = true;
         }
+
+        public string Id { get; protected set; }
+        public bool Success { get; protected set; }
+        public string Definition { get; protected set; }
+        public string Example { get; protected set; }
+        public string Data { get; protected set; }
+        public string Uri { get; protected set; }
     }
 }

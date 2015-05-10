@@ -1,44 +1,36 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
 
 namespace Eka.Web.MusicBrainz
 {
     public class RecordingSearchResults : IEnumerable<RecordingSearchResult>
     {
-        public RecordingSearch Search { get; protected set; }
-        public string QueryUri { get; protected set; }
-
-        private List<RecordingSearchResult> Results = new List<RecordingSearchResult>();
+        private readonly List<RecordingSearchResult> Results = new List<RecordingSearchResult>();
 
         internal RecordingSearchResults(RecordingSearch search, string queryUri)
         {
-            this.Search = search;
-            this.QueryUri = queryUri;
+            Search = search;
+            QueryUri = queryUri;
 
-            XmlDocument searchResults = new XmlDocument();
-            searchResults.Load(this.QueryUri);
+            var searchResults = new XmlDocument();
+            searchResults.Load(QueryUri);
 
-            XmlNamespaceManager xmlns = new XmlNamespaceManager(searchResults.NameTable);
+            var xmlns = new XmlNamespaceManager(searchResults.NameTable);
             xmlns.AddNamespace("_", searchResults.DocumentElement.NamespaceURI);
             xmlns.AddNamespace("ext", searchResults.DocumentElement.GetAttribute("xmlns:ext"));
 
             foreach (XmlNode result in searchResults.SelectNodes("//_:recording", xmlns))
             {
-                this.Results.Add(new RecordingSearchResult(result, xmlns));
+                Results.Add(new RecordingSearchResult(result, xmlns));
             }
         }
 
-        public IEnumerator<RecordingSearchResult> GetEnumerator()
-        {
-            return this.Results.GetEnumerator();
-        }
+        public RecordingSearch Search { get; protected set; }
+        public string QueryUri { get; protected set; }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return this.Results.GetEnumerator();
-        }
+        public IEnumerator<RecordingSearchResult> GetEnumerator() => Results.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => Results.GetEnumerator();
     }
 }

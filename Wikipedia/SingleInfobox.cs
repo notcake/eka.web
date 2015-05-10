@@ -1,32 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
 
 namespace Eka.Web.Wikipedia
 {
     public class SingleInfobox
     {
-        public string Name { get; protected set; }
-        public bool HasReleaseDate { get; protected set; }
-        public DateTime ReleaseDate { get; protected set; }
-        public string Genre { get; protected set; }
-
         internal SingleInfobox(XmlNode infoboxTable)
         {
-            this.Name = infoboxTable.SelectSingleNode("tr/th").InnerText;
+            Name = infoboxTable.SelectSingleNode("tr/th").InnerText;
 
             foreach (XmlNode row in infoboxTable.SelectNodes("tr"))
             {
-                XmlNode header = row.SelectSingleNode("th");
-                XmlNode data = row.SelectSingleNode("td");
-                if (header == null) { continue; }
-                if (data == null) { continue; }
+                var header = row.SelectSingleNode("th");
+                var data = row.SelectSingleNode("td");
+                if (header == null)
+                {
+                    continue;
+                }
+                if (data == null)
+                {
+                    continue;
+                }
 
                 if (header.InnerText == "Released")
                 {
-                    string releaseDateString = data.InnerText;
+                    var releaseDateString = data.InnerText;
                     if (releaseDateString.IndexOf('(') >= 0)
                     {
                         releaseDateString = releaseDateString.Substring(0, releaseDateString.IndexOf('('));
@@ -42,14 +40,19 @@ namespace Eka.Web.Wikipedia
                     }
 
                     DateTime releaseDate;
-                    this.HasReleaseDate = DateTime.TryParse(releaseDateString, out releaseDate);
-                    this.ReleaseDate = releaseDate;
+                    HasReleaseDate = DateTime.TryParse(releaseDateString, out releaseDate);
+                    ReleaseDate = releaseDate;
                 }
                 else if (header.InnerText == "Genre")
                 {
-                    this.Genre = data.InnerText;
+                    Genre = data.InnerText;
                 }
             }
         }
+
+        public string Name { get; protected set; }
+        public bool HasReleaseDate { get; protected set; }
+        public DateTime ReleaseDate { get; protected set; }
+        public string Genre { get; protected set; }
     }
 }
