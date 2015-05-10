@@ -28,6 +28,9 @@ Thumbs.db
 *.bat
 *.php
 
+# we need this for nuget
+
+!packages.config
 
 ###################### Stuff from https://github.com/github/gitignore ######################
 
