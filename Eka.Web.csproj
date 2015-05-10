@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{777A7F56-A323-4769-B5D4-6F376D06D3A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eka.Web</RootNamespace>
+    <AssemblyName>Eka.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Google\CurrencyConverter.cs" />
+    <Compile Include="Amazon\Amazon.cs" />
+    <Compile Include="Thesaurus\Thesaurus.cs" />
+    <Compile Include="PlotGenerator\Plot.cs" />
+    <Compile Include="SloganGenerator\Slogan.cs" />
+    <Compile Include="UrbanDictionary\UrbanDictionary.cs" />
+    <Compile Include="MusicBrainz\RecordingSearch.cs" />
+    <Compile Include="MusicBrainz\RecordingSearchResult.cs" />
+    <Compile Include="MusicBrainz\RecordingSearchResults.cs" />
+    <Compile Include="MusicBrainz\ReleaseResult.cs" />
+    <Compile Include="Pastebin\Paste.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Twitter\Tweet.cs" />
+    <Compile Include="Vimeo\VideoInfo.cs" />
+    <Compile Include="Wikipedia\AlbumInfobox.cs" />
+    <Compile Include="Wikipedia\Page.cs" />
+    <Compile Include="Wikipedia\SingleInfobox.cs" />
+    <Compile Include="Wolfram\Wolfram.cs" />
+    <Compile Include="Xml\DtdCache.cs" />
+    <Compile Include="Xml\XmlLoader.cs" />
+    <Compile Include="Xml\CachingXmlResolver.cs" />
+    <Compile Include="YouTube\CountryRestriction.cs" />
+    <Compile Include="YouTube\PlaybackRestriction.cs" />
+    <Compile Include="YouTube\Relationship.cs" />
+    <Compile Include="YouTube\VideoInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\www.w3.org\TR\xhtml1\DTD\xhtml-lat1.ent" />
+    <None Include="Resources\www.w3.org\TR\xhtml1\DTD\xhtml-special.ent" />
+    <None Include="Resources\www.w3.org\TR\xhtml1\DTD\xhtml-symbol.ent" />
+    <None Include="Resources\www.w3.org\TR\xhtml1\DTD\xhtml1-transitional.dtd" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
