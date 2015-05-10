@@ -10,10 +10,6 @@
 *.pdb
 *.manifest
 
-# VS stuff
-
-*.csproj
-
 # OS stuff
 
 .DS_Store
