@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="Twitter\Tweet.cs" />
     <Compile Include="Vimeo\VideoInfo.cs" />
+    <Compile Include="Vine\Vine.cs" />
     <Compile Include="Wikipedia\AlbumInfobox.cs" />
     <Compile Include="Wikipedia\Page.cs" />
     <Compile Include="Wikipedia\SingleInfobox.cs" />
